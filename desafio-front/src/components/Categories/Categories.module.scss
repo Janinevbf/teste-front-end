@@ -1,0 +1,67 @@
+@use '../../styles/variables' as *;
+
+.categoriesContainer {
+  max-width: $screen-desktop;
+  margin: 32px auto 40px;
+  padding: 0 16px;
+
+  .grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .item {
+    width: 128px;        // Largura exata informada no Figma
+    height: 171px;       // Altura total exata informada no Figma
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+
+    .iconCard {
+  width: 128px;
+  height: 128px;
+  background: #F8F8F8;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+
+  img {
+    width: 60px;          // Largura padrão para manter os ícones proporcionais
+    height: 60px;
+    object-fit: contain;  // Evita distorções no PNG
+  }
+}
+
+    .label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #3F3F3F;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    /* Estado selecionado / ativo (ex: Tecnologia) */
+    &.active {
+      .iconCard {
+        background: #ffffff;
+        box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
+
+        .icon {
+          color: $color-primary;
+        }
+      }
+
+      .label {
+        color: $color-primary;
+        font-weight: 700;
+      }
+    }
+  }
+}

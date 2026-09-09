@@ -1,0 +1,156 @@
+@use '../../styles/variables' as *;
+
+.header {
+  width: 100%;
+  background: #FFFFFF;
+
+  .topBar {
+    border-bottom: 1px solid #F0F0F0;
+    padding: 7px 0;
+
+    .topBarContent {
+      max-width: $screen-desktop;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      justify-content: center;
+      gap: 56px;
+    }
+
+    .topBarItem {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      color: #9F9F9F;
+
+      img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+      }
+
+      strong {
+        color: $color-primary;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .mainHeader {
+    padding: 14px 0;
+    border-bottom: 1px solid #F0F0F0;
+
+    .container {
+      max-width: $screen-desktop;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .searchBox {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #F8F8F8;
+      border-radius: 10px;
+      padding: 12px 24px;
+      width: 100%;
+      max-width: 630px;
+
+      input {
+        border: none;
+        background: transparent;
+        width: 100%;
+        outline: none;
+        font-size: 14px;
+        color: #3F3F3F;
+
+        &::placeholder {
+          color: #9F9F9F;
+        }
+      }
+
+      img {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+        cursor: pointer;
+      }
+    }
+
+    .iconsGroup {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+
+      button {
+        background: none;
+        border: none;
+        cursor: pointer;
+
+        img {
+          width: 24px;
+          height: 24px;
+          object-fit: contain;
+          transition: transform 0.2s ease;
+          opacity: 1;
+          filter: brightness(0.9);
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+
+  .navMenu {
+    .container {
+      max-width: $screen-desktop;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      list-style: none;
+      padding: 12px 0;
+
+      a {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 600;
+        color: #9F9F9F;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: color 0.2s ease;
+
+        img {
+          width: 20px;
+          height: 20px;
+          object-fit: contain;
+        }
+
+        &:hover,
+        &.active {
+          color: $color-primary;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
