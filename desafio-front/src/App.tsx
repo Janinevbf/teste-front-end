@@ -22,6 +22,10 @@ export function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  const handleOpenModal = (product: Product) => {
+    setSelectedProduct(product);
+  };
+
   useEffect(() => {
     async function loadProducts() {
       try {
@@ -47,40 +51,36 @@ export function App() {
         <Banner />
         <Categories />
 
-        {/* Vitrine 1 com Abas */}
+        
         <ProductShelf
           products={products}
-          onOpenModal={(prod) => setSelectedProduct(prod)}
+          onOpenModal={handleOpenModal}
           loading={loading}
           error={error}
-          hasTabs={true}
         />
 
-        {/* Parceiros Bloco 1 */}
+       
         <PartnersBanners />
 
-        {/* Vitrine 2 */}
+       
         <ProductShelf
           products={products}
-          onOpenModal={(prod) => setSelectedProduct(prod)}
+          onOpenModal={handleOpenModal}
           loading={loading}
           error={error}
-          hasTabs={false}
+          showSeeAll={true}
         />
 
-        {/* Parceiros Bloco 2 */}
-        <PartnersBanners />
-
-        {/* Seção de Marcas */}
+        
         <Brands />
 
-        {/* Repetição final de Vitrine conforme Figma */}
+        
         <ProductShelf
           products={products}
-          onOpenModal={(prod) => setSelectedProduct(prod)}
+          onOpenModal={handleOpenModal}
           loading={loading}
           error={error}
-          hasTabs={false}
+          showSeeAll={true}
         />
       </main>
 

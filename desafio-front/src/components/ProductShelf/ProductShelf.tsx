@@ -8,36 +8,50 @@ interface ProductShelfProps {
   onOpenModal: (product: Product) => void;
   loading: boolean;
   error: string | null;
+  showSeeAll?: boolean; // Prop para controlar a exibição do 'Ver todos'
 }
 
 const subcategories = ['CELULAR', 'ACESSÓRIOS', 'TABLETS', 'NOTEBOOKS', 'TVS', 'VER TODOS'];
 
-export function ProductShelf({ products, onOpenModal, loading, error }: ProductShelfProps) {
+export function ProductShelf({ 
+  products, 
+  onOpenModal, 
+  loading, 
+  error,
+  showSeeAll = false 
+}: ProductShelfProps) {
   const [activeTab, setActiveTab] = useState('CELULAR');
 
   return (
     <section className={styles.shelfContainer}>
-      {/* Título com linhas laterais */}
       <div className={styles.titleWrapper}>
         <div className={styles.line} />
         <h2>Produtos relacionados</h2>
         <div className={styles.line} />
       </div>
 
-      {/* Menu de Subcategorias / Abas */}
-      <div className={styles.tabsContainer}>
-        {subcategories.map((tab) => (
-          <button
-            key={tab}
-            className={`${styles.tabItem} ${activeTab === tab ? styles.active : ''}`}
-            onClick={() => setActiveTab(tab)}
-          >
-            {tab}
-          </button>
-        ))}
-      </div>
+      {/* Renderiza as abas de categoria na primeira vitrine */}
+      {!showSeeAll && (
+        <div className={styles.tabsContainer}>
+          {subcategories.map((tab) => (
+            <button
+              key={tab}
+              className={`${styles.tabItem} ${activeTab === tab ? styles.active : ''}`}
+              onClick={() => setActiveTab(tab)}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+      )}
 
-      {/* Carrossel com Setas e Grid de Produtos */}
+      {/* Renderiza o 'Ver todos' na segunda vitrine (abaixo dos Parceiros) */}
+      {showSeeAll && (
+        <a href="#ver-todos" className={styles.seeAllSub}>
+          Ver todos
+        </a>
+      )}
+
       <div className={styles.carouselWrapper}>
         <button className={`${styles.arrowBtn} ${styles.prev}`} aria-label="Anterior">
           ‹

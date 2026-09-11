@@ -13,8 +13,8 @@
 
   /* Newsletter Block */
   .newsletter {
-    background: #2A225B;
-    padding: 32px 0;
+    background: #271C47;
+    padding: 60px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
     .container {
@@ -22,6 +22,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 32px;
+      padding: 40px ;
 
       @media (max-width: $screen-mobile) {
         flex-direction: column;
@@ -29,22 +30,29 @@
       }
     }
 
-    .newsText {
-      max-width: 380px;
+   .newsText {
+  max-width: 520px; 
 
-      h2 {
-        font-size: 20px;
-        font-weight: 700;
-        margin-bottom: 4px;
-        text-transform: uppercase;
-      }
+  h2 {
+    font-size: 28px;
+    font-weight: 700; 
+    line-height: 120%;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+    white-space: nowrap; 
 
-      p {
-        font-size: 12px;
-        color: #E2E2E2;
-        line-height: 1.3;
-      }
+    @media (max-width: 1200px) {
+      white-space: normal; 
     }
+  }
+
+  p {
+    font-size: 13px;
+    color: #FFFFFF;
+    line-height: 1.4;
+    opacity: 0.9;
+  }
+}
 
     .newsForm {
       display: flex;
@@ -53,16 +61,16 @@
 
       .inputGroup {
         display: flex;
-        gap: 12px;
+        gap: 10px;
 
         input {
-          padding: 12px 16px;
+          padding: 12px 24px;
           border-radius: 6px;
           border: none;
           outline: none;
           font-size: 14px;
           width: 200px;
-          color: #3F3F3F;
+          color: #676767;
 
           &::placeholder {
             color: #9F9F9F;
@@ -71,10 +79,10 @@
 
         button {
           background-color: $color-secondary;
-          color: #000000;
-          font-weight: 700;
-          padding: 12px 24px;
-          border-radius: 6px;
+          color: #161615;
+          font-weight: 600;
+          padding: 15px 40px;
+          border-radius: 8px;
           border: none;
           cursor: pointer;
           text-transform: uppercase;
@@ -84,6 +92,8 @@
             filter: brightness(0.95);
           }
         }
+
+        
       }
 
       .checkboxLabel {
@@ -100,59 +110,77 @@
       }
     }
   }
-
-  /* Main Footer Section */
+/* Main Footer Section */
+/* Main Footer Section */
   .mainFooter {
-    background: #F4F4F4;
-    color: #3F3F3F;
-    padding: 40px 0;
+    background: #FFFFFF;
+    color: #3F3F40;
+    padding: 56px 0 40px; /* Mais espaço interno vertical */
 
     .container {
       display: flex;
-      justify-content: space-between;
-      gap: 40px;
+      align-items: flex-start;
+      justify-content: flex-start;
 
       @media (max-width: $screen-mobile) {
         flex-direction: column;
+        gap: 32px;
       }
     }
 
+    /* Coluna da marca/logo com mais espaço e respiro */
     .brandCol {
-      max-width: 250px;
+      max-width: 320px; /* Largura ideal para o texto não ficar espremido */
+      width: 100%;
 
       .logo {
         height: 32px;
-        margin-bottom: 16px;
+        margin-bottom: 20px; /* Distância confortável abaixo da logo */
       }
 
       p {
-        font-size: 12px;
+        font-size: 13px;
         color: #808080;
-        line-height: 1.4;
-        margin-bottom: 20px;
+        line-height: 1.6; /* Maior espaçamento entre linhas do texto */
+        margin-bottom: 28px; /* Respiro amplo até os ícones sociais */
+        font-weight: 300;
       }
 
       .socialIcons {
         display: flex;
-        gap: 16px;
+        gap: 20px;
 
         a {
           text-decoration: none;
           font-size: 18px;
+          color: #3F3F40;
+          transition: opacity 0.2s ease;
+
+          &:hover {
+            opacity: 0.7;
+          }
         }
       }
     }
 
+    /* Navegação com alinhamento na metade da tela */
     .linksNav {
       display: flex;
       gap: 60px;
       border-left: 1px solid #DEDEDE;
-      padding-left: 60px;
+      padding-left: 48px;
+      margin-left: auto; /* Empurra o conjunto para a metade da tela como no Figma */
+      margin-right: 60px;
+
+      @media (max-width: 1200px) {
+        margin-right: 0;
+      }
 
       @media (max-width: $screen-mobile) {
         border-left: none;
         padding-left: 0;
-        gap: 30px;
+        margin-left: 0;
+        gap: 32px;
       }
 
       .linkGroup {
@@ -161,39 +189,146 @@
           font-weight: 700;
           margin-bottom: 16px;
           color: #3F3F3F;
+         
         }
 
         ul {
           list-style: none;
           display: flex;
           flex-direction: column;
-          gap: 8px;
+          gap: 12px;
+          padding: 0;
+          margin: 0;
 
           a {
             text-decoration: none;
             font-size: 12px;
             color: #808080;
+            font-weight: 400;
             transition: color 0.2s ease;
 
             &:hover {
-              color: $color-primary;
+              color: #2A225B;
+            }
+          }
+        }
+      }
+    }
+  }/* Main Footer Section */
+  .mainFooter {
+    background: #FFFFFF;
+    color: #3F3F40;
+    padding: 56px 0 40px; /* Mais espaço interno vertical */
+
+    .container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      @media (max-width: $screen-mobile) {
+        flex-direction: column;
+        gap: 32px;
+      }
+    }
+
+    /* Coluna da marca/logo com mais espaço e respiro */
+    .brandCol {
+      max-width: 320px; /* Largura ideal para o texto não ficar espremido */
+      width: 100%;
+
+      .logo {
+        height: 32px;
+        margin-bottom: 20px; /* Distância confortável abaixo da logo */
+      }
+
+      p {
+        font-size: 13px;
+        color: #808080;
+        line-height: 1.6; /* Maior espaçamento entre linhas do texto */
+        margin-bottom: 28px; /* Respiro amplo até os ícones sociais */
+        font-weight: 300;
+      }
+
+      .socialIcons {
+        display: flex;
+        gap: 20px;
+
+        a {
+          text-decoration: none;
+          font-size: 18px;
+          color: #3F3F40;
+          transition: opacity 0.2s ease;
+
+          &:hover {
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+
+    /* Navegação com alinhamento na metade da tela */
+    .linksNav {
+      display: flex;
+      gap: 60px;
+      border-left: 1px solid #DEDEDE;
+      padding-left: 48px;
+      margin-left: auto; /* Empurra o conjunto para a metade da tela como no Figma */
+      margin-right: 60px;
+
+      @media (max-width: 1200px) {
+        margin-right: 0;
+      }
+
+      @media (max-width: $screen-mobile) {
+        border-left: none;
+        padding-left: 0;
+        margin-left: 0;
+        gap: 32px;
+      }
+
+      .linkGroup {
+        h3 {
+          font-size: 14px;
+          font-weight: 700;
+          margin-bottom: 16px;
+          color: #3F3F3F;
+          
+        }
+
+        ul {
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          padding: 0;
+          margin: 0;
+
+          a {
+            text-decoration: none;
+            font-size: 12px;
+            color: #808080;
+            font-weight: 400;
+            transition: color 0.2s ease;
+
+            &:hover {
+              color: #2A225B;
             }
           }
         }
       }
     }
   }
-
-  /* Copyright Bottom */
   .copyright {
-    background: #F4F4F4;
-    border-top: 1px solid #DEDEDE;
-    padding: 16px 0;
+    background: #FFFFFF; 
+    border-top: 1px solid #DEDEDE; 
+    padding: 24px 0; 
     text-align: center;
 
     p {
       font-size: 12px;
-      color: #808080;
+      color: #3F3F40;
+      margin: 0;
+      font-weight: 400;
     }
   }
 }

@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { Product } from '../../types/product';
+import { useState } from 'react';
+import { Product } from '../../App';
 import styles from './ProductModal.module.scss';
 
 interface ProductModalProps {
@@ -7,52 +7,59 @@ interface ProductModalProps {
   onClose: () => void;
 }
 
-export const ProductModal = ({ product, onClose }: ProductModalProps) => {
+export function ProductModal({ product, onClose }: ProductModalProps) {
+  const [quantity, setQuantity] = useState(1);
+
   if (!product) return null;
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onClose]);
+  const handleDecrease = () => {
+    if (quantity > 1) setQuantity(quantity - 1);
+  };
 
-  const formattedPrice = new Intl.NumberFormat('pt-BR', {
+  const handleIncrease = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const formattedPrice = product.price.toLocaleString('pt-BR', {
     style: 'currency',
     currency: 'BRL',
-  }).format(product.price);
+  });
 
   return (
-    <div className={styles.overlay} onClick={onClose} role="presentation">
-      <div 
-        className={styles.modal} 
-        onClick={(e) => e.stopPropagation()} 
-        role="dialog" 
-        aria-modal="true"
-        aria-labelledby="modal-title"
-      >
+    <div className={styles.overlay} onClick={onClose}>
+      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         <button className={styles.closeBtn} onClick={onClose} aria-label="Fechar modal">
-          &times;
+          ✕
         </button>
 
-        <div className={styles.content}>
-          <div className={styles.imageBox}>
-            <img src={product.photo} alt={product.productName} />
-          </div>
+        <div className={styles.productImageWrapper}>
+          <img src={product.photo} alt={product.productName} />
+        </div>
 
-          <div className={styles.details}>
-            <h2 id="modal-title" className={styles.title}>{product.productName}</h2>
-            <span className={styles.price}>{formattedPrice}</span>
-            <p className={styles.description}>{product.descriptionShort}</p>
-            <a href="#" className={styles.moreLink}>Veja mais detalhes do produto &gt;</a>
+        <div className={styles.productDetails}>
+          <h2 className={styles.title}>{product.productName}</h2>
+          <p className={styles.price}>{formattedPrice}</p>
+          <p className={styles.description}>
+            {product.descriptionShort || 'Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.'}
+          </p>
 
-            <button type="button" className={styles.buyButton}>
-              Comprar
+          <a href="#detalhes" className={styles.detailsLink}>
+            Veja mais detalhes do produto &gt;
+          </a>
+
+          <div className={styles.actionRow}>
+            <div className={styles.quantityControl}>
+              <button type="button" onClick={handleDecrease}>-</button>
+              <span>{String(quantity).padStart(2, '0')}</span>
+              <button type="button" onClick={handleIncrease}>+</button>
+            </div>
+
+            <button type="button" className={styles.buyBtn}>
+              COMPRAR
             </button>
           </div>
         </div>
       </div>
     </div>
   );
-};
+}

@@ -20,9 +20,9 @@
     }
 
     h2 {
-      font-size: 28px;
+      font-size: 30px;
       font-weight: 700;
-      color: $color-primary;
+      color: #3442B5;
       text-align: center;
       white-space: nowrap;
     }
@@ -61,7 +61,25 @@
     }
   }
 
-  /* Estrutura do Carrossel */
+ 
+  .seeAllSub {
+ display: block;        
+  width: fit-content;    
+  margin: 4px auto 20px; 
+  
+  font-size: 15px;
+  font-weight: 700;
+  color: #3F3F40;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #3F51B5;
+    text-decoration: underline;
+  }
+}
   .carouselWrapper {
     position: relative;
     display: flex;

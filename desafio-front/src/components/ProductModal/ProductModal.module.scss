@@ -2,100 +2,173 @@
 
 .overlay {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.55);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 9999;
   padding: 16px;
 }
 
-.modal {
-  background-color: #ffffff;
-  width: 100%;
-  max-width: 770px;
+.modalContent {
+  background: #FFFFFF;
   border-radius: 4px;
+  width: 100%;
+  max-width: 768px;
   position: relative;
-  padding: 32px;
-  box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  padding: 32px 40px;
+  gap: 32px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
 
-  .closeBtn {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    font-size: 24px;
-    color: #707070;
-    line-height: 1;
+  @media (max-width: $screen-mobile) {
+    flex-direction: column;
+    padding: 24px 16px;
+    gap: 20px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: #707070;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #000000;
+  }
+}
+
+.productImageWrapper {
+  width: 240px;
+  height: 240px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  @media (max-width: $screen-mobile) {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+.productDetails {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  .title {
+    font-size: 20px;
+    font-weight: 400;
+    color: #041E50;
+    margin-bottom: 12px;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #041E50;
+    margin-bottom: 16px;
+  }
+
+  .description {
+    font-size: 11px;
+    color: #222222;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    opacity: 0.8;
+  }
+
+  .detailsLink {
+    font-size: 12px;
+    font-weight: 600;
+    color: #3442B5;
+    text-decoration: none;
+    margin-bottom: 24px;
 
     &:hover {
-      color: $color-primary;
+      text-decoration: underline;
     }
   }
 
-  .content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-
-    @media (max-width: $screen-mobile) {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .imageBox {
+  .actionRow {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 16px;
 
-    img {
-      max-width: 100%;
-      max-height: 280px;
-      object-fit: contain;
+    @media (max-width: $screen-mobile) {
+      width: 100%;
     }
   }
 
-  .details {
+  .quantityControl {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    border: 1px solid #041E50;
+    border-radius: 4px;
+    height: 36px;
+    width: 110px;
 
-    .title {
-      font-size: 20px;
-      color: $color-secondary;
-      font-weight: 400;
-      margin-bottom: 12px;
+    button {
+      background: transparent;
+      border: none;
+      width: 32px;
+      height: 100%;
+      font-size: 16px;
+      color: #041E50;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #F4F4F4;
+      }
     }
 
-    .price {
-      font-size: 28px;
-      font-weight: 700;
-      color: $color-secondary;
-      margin-bottom: 16px;
-    }
-
-    .description {
-      font-size: 13px;
-      color: #222222;
-      line-height: 1.5;
-      margin-bottom: 16px;
-    }
-
-    .moreLink {
-      font-size: 12px;
-      color: $color-secondary;
-      text-decoration: none;
-      margin-bottom: 24px;
+    span {
+      flex: 1;
+      text-align: center;
+      font-size: 14px;
       font-weight: 500;
+      color: #041E50;
     }
+  }
 
-    .buyButton {
-      background-color: $color-primary;
-      color: #ffffff;
-      padding: 12px;
-      border-radius: 4px;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-top: auto;
+  .buyBtn {
+    flex: 1;
+    height: 36px;
+    background-color: #F7CA11;
+    color: #041E50;
+    font-size: 13px;
+    font-weight: 700;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: filter 0.2s ease;
+
+    &:hover {
+      filter: brightness(0.95);
     }
   }
 }
