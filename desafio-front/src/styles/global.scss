@@ -6,11 +6,35 @@
   box-sizing: border-box;
 }
 
+html {
+
+  scroll-behavior: smooth;
+  
+  
+  @media (max-width: 1080px) {
+    font-size: 93.75%; /* 15px */
+  }
+
+  @media (max-width: 720px) {
+    font-size: 87.5%; /* 14px */
+  }
+}
+
 body {
   font-family: $font-family;
   color: $color-text-title;
   background-color: #FFFFFF;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+img, 
+svg, 
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 button {
@@ -18,4 +42,15 @@ button {
   border: none;
   background: none;
   font-family: Poppins, sans-serif;
+}
+
+.container {
+  width: 100%;
+  max-width: $screen-desktop;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @media (max-width: $screen-mobile) {
+    padding: 0 12px;
+  }
 }

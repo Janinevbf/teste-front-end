@@ -27,6 +27,9 @@ export function App() {
   };
 
   useEffect(() => {
+    // Força o título correto da aba no navegador
+    document.title = "Econverse";
+
     async function loadProducts() {
       try {
         setLoading(true);
@@ -51,7 +54,6 @@ export function App() {
         <Banner />
         <Categories />
 
-        
         <ProductShelf
           products={products}
           onOpenModal={handleOpenModal}
@@ -59,10 +61,8 @@ export function App() {
           error={error}
         />
 
-       
         <PartnersBanners />
 
-       
         <ProductShelf
           products={products}
           onOpenModal={handleOpenModal}
@@ -71,10 +71,8 @@ export function App() {
           showSeeAll={true}
         />
 
-        
         <Brands />
 
-        
         <ProductShelf
           products={products}
           onOpenModal={handleOpenModal}
